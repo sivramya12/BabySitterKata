@@ -9,28 +9,24 @@ namespace BabySitterKata.Models
     {
         public string startTimeValidate(float starttime,string amorpm)
         {
-           //start time no later than 5PM
             if((starttime>=5.0)&&(amorpm=="PM"))           
-            return ("valid");
-            else
-            {
-                //AM validation
-                if ((starttime == 12) && (amorpm == "AM"))
                     return ("valid");
-                else if ((starttime >= 1.0) && (starttime < 4.0) && (amorpm == "AM"))                
+            else if ((starttime == 12.0) && (amorpm == "AM"))
+                    return ("valid");
+            else if ((starttime >= 1.0) && (starttime < 4.0) && (amorpm == "AM"))                
                     return ("valid");               
-                else
+             else
                     return ("invalid");
-            }
+            
         }
 
         public string endTimeValidate(float endTime, string amorpm)
         {
-            if ((endTime == 12) && (amorpm == "AM"))
+            if ((endTime == 12.0) && (amorpm == "AM"))
                 return ("valid");
-            else if ((endTime <= 4) && (amorpm == "AM"))
+            else if ((endTime <= 4.0) && (amorpm == "AM"))
                 return ("valid");
-            else if ((endTime > 5) && (amorpm == "PM"))
+            else if ((endTime > 5.0) && (amorpm == "PM"))
                 return ("valid");
             else
                 return ("invalid");
