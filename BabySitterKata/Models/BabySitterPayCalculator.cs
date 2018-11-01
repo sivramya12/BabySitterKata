@@ -7,16 +7,24 @@ namespace BabySitterKata.Models
 {
     public class BabySitterPayCalculator
     {
-        public string startTimeValidate(float time,string amorpm)
+        public string startTimeValidate(float starttime,string amorpm)
         {
-           
-            if((time>=5.0)&&(amorpm=="PM"))
-            {
+           //start time no later than 5PM
+            if((starttime>=5.0)&&(amorpm=="PM"))
+            
                 return ("valid");
-            }
+            
             else
             {
-                return ("invalid");
+                //AM validation
+                if ((starttime == 12) && (amorpm == "AM"))
+                    return ("valid");
+                else if ((starttime >= 1.0) && (starttime < 4.0) && (amorpm == "AM"))
+                
+                    return ("valid");
+                
+                else
+                    return ("invalid");
             }
         }
     }
