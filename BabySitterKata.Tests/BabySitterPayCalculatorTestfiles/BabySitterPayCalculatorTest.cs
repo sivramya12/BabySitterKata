@@ -36,6 +36,18 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //checking for leaving time 3 AM
             Assert.AreEqual("valid", b.endTimeValidate(3, "AM"));
 
+            //checking for leaving time 12 AM
+            Assert.AreEqual("valid", b.endTimeValidate(12, "AM"));
+
+            //checking for leaving time 4 AM exact
+            Assert.AreEqual("valid", b.endTimeValidate(4, "AM"));
+
+            //checking for leaving time 5 AM
+            Assert.AreEqual("invalid", b.endTimeValidate(5, "AM"));
+
+            //checking for leaving time 11 PM
+            Assert.AreEqual("valid", b.endTimeValidate(11, "PM"));
+
         }
 
 

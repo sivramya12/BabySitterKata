@@ -26,7 +26,11 @@ namespace BabySitterKata.Models
 
         public string endTimeValidate(float endTime, string amorpm)
         {
-            if ((endTime <= 4) && (amorpm == "AM"))
+            if ((endTime == 12) && (amorpm == "AM"))
+                return ("valid");
+            else if ((endTime <= 4) && (amorpm == "AM"))
+                return ("valid");
+            else if ((endTime > 5) && (amorpm == "PM"))
                 return ("valid");
             else
                 return ("invalid");
