@@ -91,14 +91,10 @@ namespace BabySitterKata.Models
             string endtimebeforestarttimevalidation = endTimeBeforeStarttime(endtime, amorpmendtime,starttime, amorpmstarttime);
 
             //validating input
-            if (starttimevalidation == "invalid")
-                return (payamount = "InvalidStartTime");
-            else if (endtimevalidation == "invalid")
-                return (payamount = "InvalidEndTime");
-            else if (onefamilypernightvalidation == "invalid")
-                return (payamount = "InvalidFamilyName");
-            else if (endtimebeforestarttimevalidation == "invalid")
-                return (payamount = "InvalidStartandEndTime");
+            if ((starttimevalidation == "invalid")||endtimevalidation=="invalid"||onefamilypernightvalidation=="invalid"||endtimebeforestarttimevalidation=="invalid")
+            {
+                return ("InvalidCredentials");
+            }
             else
             {
                 if (familyname == "A")

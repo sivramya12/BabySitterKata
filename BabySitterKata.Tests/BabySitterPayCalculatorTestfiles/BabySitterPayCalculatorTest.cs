@@ -137,8 +137,22 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
         {
             //pay calculation for family A
             Assert.AreEqual("$30", b.payCalculator("A",6,"PM",8,"PM"));
+
             //pay calculation invalid input
-            Assert.AreEqual("InvalidStartTime", b.payCalculator("A",3, "PM", 10, "PM"));
+            Assert.AreEqual("InvalidCredentials", b.payCalculator("A",3, "PM", 10, "PM"));
+
+            //pay calculation invalid input
+            Assert.AreEqual("InvalidCredentials", b.payCalculator("A", 6, "PM", 5, "AM"));
+
+            //pay calculation invalid input
+            Assert.AreEqual("InvalidCredentials", b.payCalculator("AandB", 6, "PM", 3, "AM"));
+
+            //pay calculation invalid input
+            Assert.AreEqual("InvalidCredentials", b.payCalculator("A", 6, "PM", 6, "PM"));
+
+            //pay calculation invalid input
+            Assert.AreEqual("InvalidCredentials", b.payCalculator("AandB", 2, "PM", 5, "AM"));
+
         }
 
         }
