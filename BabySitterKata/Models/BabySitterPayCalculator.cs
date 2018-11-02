@@ -73,6 +73,8 @@ namespace BabySitterKata.Models
             }
             else if ((amorpmendtime == "PM") && (amorpmstarttime == "AM"))
                 return ("invalid");
+            else if ((amorpmendtime == "AM") && (amorpmstarttime == "PM") && (starttime >= 5) && (endtime <= 4))
+                return ("valid");
             else
                 return ("invalid");
         }
