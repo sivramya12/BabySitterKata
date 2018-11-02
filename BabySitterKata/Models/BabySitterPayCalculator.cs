@@ -34,7 +34,7 @@ namespace BabySitterKata.Models
 
         public string familyvalidate(string familyname)
         {
-            if (familyname == "A")
+            if ((familyname == "A")||(familyname=="B")||(familyname=="C"))
                 return ("valid");
             else
                 return ("invalid");
