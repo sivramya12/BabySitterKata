@@ -53,7 +53,13 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
 
         }
 
+        [TestMethod]
+        public void onlyOneFamilyPerNightCheck()
+        {
+            //checking for one family per night
+            Assert.AreEqual("valid", b.familyvalidate("A"));
+        }
 
 
-    }
+        }
 }

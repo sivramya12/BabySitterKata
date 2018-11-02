@@ -32,5 +32,12 @@ namespace BabySitterKata.Models
                 return ("invalid");
         }
 
+        public string familyvalidate(string familyname)
+        {
+            if (familyname == "A")
+                return ("valid");
+            else
+                return ("invalid");
+        }
     }
 }
