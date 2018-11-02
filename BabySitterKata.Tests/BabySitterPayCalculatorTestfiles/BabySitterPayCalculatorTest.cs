@@ -28,6 +28,11 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //checking for staring time as 4AM to ensure it won't accepts invalid AM values         
             Assert.AreEqual("invalid", b.startTimeValidate(4, "AM"));
 
+            //cheking for full fraction starttime
+            Assert.AreEqual("invalid", b.startTimeValidate(6.5, "PM"));
+
+            //cheking for full fraction starttime
+            Assert.AreEqual("invalid", b.startTimeValidate(37.0/5.0, "PM"));
         }
 
         [TestMethod]
@@ -51,27 +56,35 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //checking for leaving time 5 PM
             Assert.AreEqual("invalid", b.endTimeValidate(5, "PM"));
 
+            //cheking for full fraction leavetime
+            Assert.AreEqual("invalid", b.endTimeValidate(1.5, "AM"));
+
+            //cheking for full fraction leavetime
+            Assert.AreEqual("invalid", b.endTimeValidate(37.0 / 5.0, "PM"));
+
+
         }
 
         [TestMethod]
         public void onlyOneFamilyPerNightCheck()
         {
             //checking for family A  
-            Assert.AreEqual("valid", b.familyvalidate("A"));
+            Assert.AreEqual("valid", b.familyValidate("A"));
             //checking for family B
-            Assert.AreEqual("valid", b.familyvalidate("B"));
+            Assert.AreEqual("valid", b.familyValidate("B"));
             //checking for family C
-            Assert.AreEqual("valid", b.familyvalidate("C"));
+            Assert.AreEqual("valid", b.familyValidate("C"));
             //checking for family A and B
-            Assert.AreEqual("invalid", b.familyvalidate("AB"));
+            Assert.AreEqual("invalid", b.familyValidate("AB"));
             //checking for family B and C
-            Assert.AreEqual("invalid", b.familyvalidate("BandC"));
+            Assert.AreEqual("invalid", b.familyValidate("BandC"));
             //checking for family A and C
-            Assert.AreEqual("invalid", b.familyvalidate("A&C"));
+            Assert.AreEqual("invalid", b.familyValidate("A&C"));
             //checking for family A, B and C
-            Assert.AreEqual("invalid", b.familyvalidate("A&CandB"));
+            Assert.AreEqual("invalid", b.familyValidate("A&CandB"));
         }
 
+        
 
-        }
+     }
 }
