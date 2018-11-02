@@ -86,8 +86,15 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
         [TestMethod]
         public void endTimeBeforeStartTimeValidate()
         {
-            //checking for endtime before starttime
+            //checking for endtime in PM and starttime in PM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(6,"PM",8,"PM"));
+            //checking for endtime PM and starttime PM
+            Assert.AreEqual("valid", b.endTimeBeforeStarttime(8, "PM", 6, "PM"));
+            //checking for endtime PM and starttime PM
+            Assert.AreEqual("invalid", b.endTimeBeforeStarttime(7, "PM", 12, "PM"));
+            //checking out of range value both PM
+            Assert.AreEqual("invalid", b.endTimeBeforeStarttime(3, "PM", 2, "PM"));
+           
         }
 
      }
