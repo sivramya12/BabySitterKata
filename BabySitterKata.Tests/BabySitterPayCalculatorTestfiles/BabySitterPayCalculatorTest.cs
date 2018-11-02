@@ -135,8 +135,7 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
         [TestMethod]
         public void payCalculatorValidate()
         {
-            //pay calculation for family A
-            Assert.AreEqual("$30", b.payCalculator("A",6,"PM",8,"PM"));
+           
 
             //pay calculation invalid input
             Assert.AreEqual("InvalidCredentials", b.payCalculator("A",3, "PM", 10, "PM"));
@@ -152,6 +151,13 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
 
             //pay calculation invalid input
             Assert.AreEqual("InvalidCredentials", b.payCalculator("AandB", 2, "PM", 5, "AM"));
+
+            //pay calculation for family A with both starts and ends in PM
+            Assert.AreEqual("$30", b.payCalculator("A", 6, "PM", 8, "PM"));
+
+            //pay calculation for family A with both starts and ends in PM
+            Assert.AreEqual("$60", b.payCalculator("A", 1, "AM", 4, "AM"));
+
 
         }
 

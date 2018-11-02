@@ -81,9 +81,8 @@ namespace BabySitterKata.Models
 
         public string payCalculator(string familyname,double starttime,string amorpmstarttime,double endtime,string amorpmendtime)
         {
-            double totalworkedhours=0;
-            double totalpay=0;
-            string payamount="invalid";
+           
+            string payamount= "InvalidCredentials";
 
             string starttimevalidation = startTimeValidate(starttime, amorpmstarttime);
             string endtimevalidation = endTimeValidate(endtime, amorpmendtime);
@@ -99,24 +98,43 @@ namespace BabySitterKata.Models
             {
                 if (familyname == "A")
                 {
-                    if ((amorpmstarttime == "PM") && (amorpmendtime == "PM"))
-                    {
-                        totalworkedhours = endtime - starttime;
-                        if (endtime <= 11)
-                        {
-                            totalpay = totalworkedhours * 15;
-                            payamount = "$" + totalpay;
-                            return payamount;
-                        }
-                        else
-                            return payamount;
-                    }
-                    else
-                        return payamount;
-                }
-                else
+                    payamount = AFamilyPayCalculate(starttime, amorpmstarttime, endtime, amorpmendtime);
                     return payamount;
+                 }
+                else                   
+                return payamount;
+             }
+
+
+        }
+
+        public string AFamilyPayCalculate(double starttime, string amorpmstarttime, double endtime, string amorpmendtime)
+        {
+            double totalworkedhours = 0;
+            double totalpay = 0;
+            string payamount="InvalidCredentials";
+            if ((amorpmstarttime == "PM") && (amorpmendtime == "PM"))
+            {
+                totalworkedhours = endtime - starttime;
+                totalpay = totalworkedhours * 15;
+                payamount = "$" + totalpay;
+                return payamount;
+
             }
+            else if (((amorpmstarttime == "AM") && (amorpmendtime == "AM")))
+            {
+                if (starttime == 12)
+                    totalworkedhours = endtime;
+                else
+                    totalworkedhours = endtime - starttime;
+                totalpay = totalworkedhours * 20;
+                payamount = "$" + totalpay;
+                return payamount;
+
+            }
+            
+            else
+                return payamount;
         }
     }
 }
