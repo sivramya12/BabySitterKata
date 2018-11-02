@@ -61,7 +61,7 @@ namespace BabySitterKata.Models
             }
             else if((amorpmendtime == "AM") && (amorpmstarttime == "AM"))
             {
-                //both starttime and endtime maynot be equal
+                //both starttime and endtime are not equal
                 if (endtime == 12)
                     return ("invalid");
                 else if ((starttime == 12) && (endtime <= 4))

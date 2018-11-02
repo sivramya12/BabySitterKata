@@ -94,8 +94,18 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(7, "PM", 12, "PM"));
             //checking out of range value both PM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(3, "PM", 2, "PM"));
-           
+            //checking for endtime AM and starttime AM
+            Assert.AreEqual("invalid", b.endTimeBeforeStarttime(12, "AM", 2, "AM"));
+            //checking for endtime AM and starttime AM
+            Assert.AreEqual("valid", b.endTimeBeforeStarttime(2, "AM", 12, "AM"));
+            //checking for endtime AM and starttime AM
+            Assert.AreEqual("invalid", b.endTimeBeforeStarttime(2, "AM", 3, "AM"));
+            //checking out of range endtime AM and starttime AM
+            Assert.AreEqual("invalid", b.endTimeBeforeStarttime(5, "AM", 3, "AM"));
+            //checking out of range endtime AM and starttime AM
+            Assert.AreEqual("invalid", b.endTimeBeforeStarttime(4, "AM", 6, "AM"));
+
         }
 
-     }
+    }
 }
