@@ -73,7 +73,7 @@ namespace BabySitterKata.Models
             }
             else if ((amorpmendtime == "PM") && (amorpmstarttime == "AM"))
                 return ("invalid");
-            else if ((amorpmendtime == "AM") && (amorpmstarttime == "PM") && (starttime >= 5) && (endtime <= 4))
+            else if ((amorpmendtime == "AM") && (amorpmstarttime == "PM") && (starttime >= 5) && ((endtime <= 4)||(endtime==12)))
                 return ("valid");
             else
                 return ("invalid");
@@ -81,9 +81,7 @@ namespace BabySitterKata.Models
 
         public string payCalculator(string familyname,double starttime,string amorpmstarttime,double endtime,string amorpmendtime)
         {
-           
             string payamount= "InvalidCredentials";
-
             string starttimevalidation = startTimeValidate(starttime, amorpmstarttime);
             string endtimevalidation = endTimeValidate(endtime, amorpmendtime);
             string onefamilypernightvalidation = familyValidate(familyname);
@@ -132,7 +130,22 @@ namespace BabySitterKata.Models
                 return payamount;
 
             }
-            
+            else if (((amorpmstarttime == "PM") && (amorpmendtime == "AM")))
+            {
+                double hoursworkedbefore11;
+                double hoursworkedafter11;
+                if (starttime == 11)
+                    hoursworkedbefore11 = 0.0;
+                else
+                    hoursworkedbefore11 = 11 - starttime;
+                if (endtime == 12)
+                    hoursworkedafter11 = 1;
+                else
+                    hoursworkedafter11 = 1 + endtime;
+                totalpay = (hoursworkedbefore11 * 15) + (hoursworkedafter11 * 20);
+                payamount = "$" + totalpay;
+                return payamount;
+            }
             else
                 return payamount;
         }

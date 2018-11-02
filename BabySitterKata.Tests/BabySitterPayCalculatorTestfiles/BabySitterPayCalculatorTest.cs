@@ -130,13 +130,14 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
 
             //checking for endtime AM and starttime PM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(3, "AM", 3, "PM"));
+
+            //checking for endtime AM and starttime PM
+            Assert.AreEqual("valid", b.endTimeBeforeStarttime( 12, "AM", 11, "PM"));
         }
 
         [TestMethod]
         public void payCalculatorValidate()
         {
-           
-
             //pay calculation invalid input
             Assert.AreEqual("InvalidCredentials", b.payCalculator("A",3, "PM", 10, "PM"));
 
@@ -158,8 +159,20 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //pay calculation for family A with both starts and ends in PM
             Assert.AreEqual("$60", b.payCalculator("A", 1, "AM", 4, "AM"));
 
+            //pay calculation for family A with both starts and ends in PM
+            Assert.AreEqual("$80", b.payCalculator("A", 12, "AM", 4, "AM"));
+
+            //pay calculation for family A with both starts and ends in PM
+            Assert.AreEqual("$90", b.payCalculator("A",9, "PM", 2, "AM"));
+
+            //pay calculation for family A with both starts and ends in PM
+            Assert.AreEqual("$60", b.payCalculator("A", 11, "PM", 2, "AM"));
+
+            //pay calculation for family A with both starts and ends in PM
+            Assert.AreEqual("$20", b.payCalculator("A", 11, "PM", 12, "AM"));
+
 
         }
 
-        }
+    }
 }
