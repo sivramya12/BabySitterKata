@@ -70,16 +70,22 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
         {
             //checking for family A  
             Assert.AreEqual("valid", b.familyValidate("A"));
+
             //checking for family B
             Assert.AreEqual("valid", b.familyValidate("B"));
+
             //checking for family C
             Assert.AreEqual("valid", b.familyValidate("C"));
+
             //checking for family A and B
             Assert.AreEqual("invalid", b.familyValidate("AB"));
+
             //checking for family B and C
             Assert.AreEqual("invalid", b.familyValidate("BandC"));
+
             //checking for family A and C
             Assert.AreEqual("invalid", b.familyValidate("A&C"));
+
             //checking for family A, B and C
             Assert.AreEqual("invalid", b.familyValidate("A&CandB"));
         }
@@ -88,31 +94,50 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
         {
             //checking for endtime in PM and starttime in PM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(6,"PM",8,"PM"));
+
             //checking for endtime PM and starttime PM
             Assert.AreEqual("valid", b.endTimeBeforeStarttime(8, "PM", 6, "PM"));
+
             //checking for endtime PM and starttime PM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(7, "PM", 12, "PM"));
+
             //checking out of range value both PM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(3, "PM", 2, "PM"));
+
             //checking for endtime AM and starttime AM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(12, "AM", 2, "AM"));
+
             //checking for endtime AM and starttime AM
             Assert.AreEqual("valid", b.endTimeBeforeStarttime(2, "AM", 12, "AM"));
+
             //checking for endtime AM and starttime AM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(2, "AM", 3, "AM"));
+
             //checking out of range endtime AM and starttime AM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(5, "AM", 3, "AM"));
+
             //checking out of range endtime AM and starttime AM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(4, "AM", 6, "AM"));
+
             //checking for endtime PM and starttime AM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(4, "PM", 6, "AM"));
+
             //checking for endtime AM and starttime PM
             Assert.AreEqual("valid", b.endTimeBeforeStarttime(4, "AM", 6, "PM"));
+
             //checking for endtime AM and starttime PM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(5, "AM", 6, "PM"));
+
             //checking for endtime AM and starttime PM
             Assert.AreEqual("invalid", b.endTimeBeforeStarttime(3, "AM", 3, "PM"));
         }
 
-    }
+        [TestMethod]
+        public void payCalculatorValidate()
+        {
+            //pay calculation for family A
+            Assert.AreEqual(30, b.payCalculator("A",6,"PM",8,"PM"));
+        }
+
+        }
 }

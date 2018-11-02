@@ -78,5 +78,29 @@ namespace BabySitterKata.Models
             else
                 return ("invalid");
         }
+
+        public double payCalculator(string familyname,double starttime,string amorpmstarttime,double endtime,string amorpmendtime)
+        {
+            double totalworkedhours=0;
+            double totalpay=0;
+            if(familyname=="A")
+            {
+                if ((amorpmstarttime == "PM") && (amorpmendtime == "PM"))
+                {
+                    totalworkedhours = endtime - starttime;
+                    if (endtime <= 11)
+                    {
+                        totalpay = totalworkedhours * 15;
+                        return totalpay;
+                    }
+                    else
+                        return 0;
+                }
+                else
+                    return 0;
+            }
+            else
+            return 0;
+        }
     }
 }
