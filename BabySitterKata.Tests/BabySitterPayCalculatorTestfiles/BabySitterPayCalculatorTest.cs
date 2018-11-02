@@ -133,6 +133,8 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
 
             //checking for endtime AM and starttime PM
             Assert.AreEqual("valid", b.endTimeBeforeStarttime( 12, "AM", 11, "PM"));
+
+           
         }
 
         [TestMethod]
@@ -171,6 +173,8 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //pay calculation for family A with both starts and ends in PM
             Assert.AreEqual("$20", b.payCalculator("A", 11, "PM", 12, "AM"));
 
+            //pay calculation for family A with both starts and ends in PM
+            Assert.AreEqual("$32", b.payCalculator("B", 1, "AM", 3, "AM"));
 
         }
 

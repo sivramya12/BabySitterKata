@@ -99,6 +99,11 @@ namespace BabySitterKata.Models
                     payamount = AFamilyPayCalculate(starttime, amorpmstarttime, endtime, amorpmendtime);
                     return payamount;
                  }
+                else if(familyname=="B")
+                {
+                    payamount = BFamilyPayCalculate(starttime, amorpmstarttime, endtime, amorpmendtime);
+                    return payamount;
+                }
                 else                   
                 return payamount;
              }
@@ -149,5 +154,25 @@ namespace BabySitterKata.Models
             else
                 return payamount;
         }
-    }
+
+        public string BFamilyPayCalculate(double starttime, string amorpmstarttime, double endtime, string amorpmendtime)
+        {
+            double totalworkedhours = 0;
+            double totalpay = 0;
+            string payamount = "InvalidCredentials";
+            if ((amorpmstarttime == "AM") && (amorpmendtime == "AM"))
+            {
+                if (starttime == 12)
+                    totalworkedhours = endtime;
+                else
+                    totalworkedhours = endtime - starttime;
+                totalpay = totalworkedhours * 16;
+                payamount = "$" + totalpay;
+                return payamount;
+            }
+
+            return payamount;
+        }
+
+     }
 }
