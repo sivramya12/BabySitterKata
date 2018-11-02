@@ -52,14 +52,14 @@ namespace BabySitterKata.Models
 
         public string endTimeBeforeStarttime(double endtime,string amorpmendtime, double starttime, string amorpmstarttime)
         {
-            if((amorpmendtime=="PM")&&(amorpmstarttime=="PM") && (starttime>=5))
+            if ((amorpmendtime == "PM") && (amorpmstarttime == "PM") && (starttime >= 5))
             {
                 if (endtime > starttime)
                     return ("valid");
                 else
                     return ("invalid");
             }
-            else if((amorpmendtime == "AM") && (amorpmstarttime == "AM"))
+            else if ((amorpmendtime == "AM") && (amorpmstarttime == "AM"))
             {
                 //both starttime and endtime are not equal
                 if (endtime == 12)
@@ -71,8 +71,10 @@ namespace BabySitterKata.Models
                 else
                     return ("invalid");
             }
+            else if ((amorpmendtime == "PM") && (amorpmstarttime == "AM"))
+                return ("invalid");
             else
-            return ("invalid");
+                return ("invalid");
         }
     }
 }
