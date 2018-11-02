@@ -79,28 +79,48 @@ namespace BabySitterKata.Models
                 return ("invalid");
         }
 
-        public double payCalculator(string familyname,double starttime,string amorpmstarttime,double endtime,string amorpmendtime)
+        public string payCalculator(string familyname,double starttime,string amorpmstarttime,double endtime,string amorpmendtime)
         {
             double totalworkedhours=0;
             double totalpay=0;
-            if(familyname=="A")
+            string payamount="invalid";
+
+            string starttimevalidation = startTimeValidate(starttime, amorpmstarttime);
+            string endtimevalidation = endTimeValidate(endtime, amorpmendtime);
+            string onefamilypernightvalidation = familyValidate(familyname);
+            string endtimebeforestarttimevalidation = endTimeBeforeStarttime(endtime, amorpmendtime,starttime, amorpmstarttime);
+
+            //validating input
+            if (starttimevalidation == "invalid")
+                return (payamount = "InvalidStartTime");
+            else if (endtimevalidation == "invalid")
+                return (payamount = "InvalidEndTime");
+            else if (onefamilypernightvalidation == "invalid")
+                return (payamount = "InvalidFamilyName");
+            else if (endtimebeforestarttimevalidation == "invalid")
+                return (payamount = "InvalidStartandEndTime");
+            else
             {
-                if ((amorpmstarttime == "PM") && (amorpmendtime == "PM"))
+                if (familyname == "A")
                 {
-                    totalworkedhours = endtime - starttime;
-                    if (endtime <= 11)
+                    if ((amorpmstarttime == "PM") && (amorpmendtime == "PM"))
                     {
-                        totalpay = totalworkedhours * 15;
-                        return totalpay;
+                        totalworkedhours = endtime - starttime;
+                        if (endtime <= 11)
+                        {
+                            totalpay = totalworkedhours * 15;
+                            payamount = "$" + totalpay;
+                            return payamount;
+                        }
+                        else
+                            return payamount;
                     }
                     else
-                        return 0;
+                        return payamount;
                 }
                 else
-                    return 0;
+                    return payamount;
             }
-            else
-            return 0;
         }
     }
 }
