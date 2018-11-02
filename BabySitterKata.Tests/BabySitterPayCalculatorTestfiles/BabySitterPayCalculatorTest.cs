@@ -83,8 +83,12 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //checking for family A, B and C
             Assert.AreEqual("invalid", b.familyValidate("A&CandB"));
         }
-
-        
+        [TestMethod]
+        public void endTimeBeforeStartTimeValidate()
+        {
+            //checking for endtime before starttime
+            Assert.AreEqual("invalid", b.endTimeBeforeStarttime(6,"PM",8,"PM"));
+        }
 
      }
 }
