@@ -173,9 +173,9 @@ namespace BabySitterKata.Models
                     totalworkedhoursafter12 = endtime;
                 else
                     totalworkedhoursafter12 = endtime - starttime;
-                totalpay = totalworkedhoursafter12 * 16;
-                payamount = "$" + totalpay;
-                return payamount;
+                totalworkedhoursbefore10 = 0;
+                totalworkedhoursfrom10to12 = 0;
+                
             }
             else if((amorpmstarttime == "PM") && (amorpmendtime == "PM"))
             {
@@ -198,9 +198,8 @@ namespace BabySitterKata.Models
                     totalworkedhoursfrom10to12 = 1;
                     //endtime-10 which will be 1 always because only possible endtime is 11 PM
                 }
-                totalpay = (totalworkedhoursbefore10 *12)+(totalworkedhoursfrom10to12*8);
-                payamount = "$" + totalpay;
-                return payamount;
+                totalworkedhoursafter12 = 0;
+                
             }
 
             else if ((amorpmstarttime == "PM") && (amorpmendtime == "AM"))
@@ -228,13 +227,23 @@ namespace BabySitterKata.Models
                         totalworkedhoursafter12 = endtime;
 
                 }
-                totalpay = (totalworkedhoursbefore10 * 12) + (totalworkedhoursfrom10to12 * 8)+(totalworkedhoursafter12 * 16);
-                payamount = "$" + totalpay;
-                return payamount;
-
+                
             }
             else
+            {
+                totalworkedhoursbefore10 = 0;
+                totalworkedhoursfrom10to12 = 0;
+                totalworkedhoursafter12 = 0;
+
+            }
+            totalpay = (totalworkedhoursbefore10 * 12) + (totalworkedhoursfrom10to12 * 8) + (totalworkedhoursafter12 * 16);
+            if(totalpay>0)
+            payamount = "$" + totalpay;
+            else
+            payamount = "InvalidCredentials";
             return payamount;
+
+          
         }
 
      }
