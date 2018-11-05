@@ -98,14 +98,19 @@ namespace BabySitterKata.Models
                 {
                     payamount = AFamilyPayCalculate(starttime, amorpmstarttime, endtime, amorpmendtime);
                     return payamount;
-                 }
-                else if(familyname=="B")
+                }
+                else if (familyname == "B")
                 {
                     payamount = BFamilyPayCalculate(starttime, amorpmstarttime, endtime, amorpmendtime);
                     return payamount;
                 }
-                else                   
-                return payamount;
+                else if (familyname == "C")
+                {
+                    payamount = CFamilyPayCalculate(starttime, amorpmstarttime, endtime, amorpmendtime);
+                    return payamount;
+                }
+                else
+                    return payamount;
              }
 
 
@@ -147,6 +152,7 @@ namespace BabySitterKata.Models
             }
             else
             {
+                //invalid input 
                 hoursworkedbefore11 = 0;
                 hoursworkedafter11 = 0;
             }
@@ -246,5 +252,32 @@ namespace BabySitterKata.Models
           
         }
 
-     }
+
+        public string CFamilyPayCalculate(double starttime, string amorpmstarttime, double endtime, string amorpmendtime)
+        {
+            //Family C pays $21 per hour before 9pm, then $15 the rest of the night
+            double hoursworkedbefore9 =0;
+            double hoursworkedafter9=0;
+            double totalpay = 0;
+            string payamount = "InvalidCredentials";
+            if ((amorpmstarttime == "AM") && (amorpmendtime == "AM"))
+            {
+                hoursworkedbefore9 = 0;
+                hoursworkedafter9 = endtime;
+            }
+            else
+            {
+                hoursworkedbefore9 = 0;
+                hoursworkedafter9 = 0;
+            }
+            totalpay = (hoursworkedbefore9 * 21) + (hoursworkedafter9 * 15);
+            if (totalpay > 0)
+                payamount = "$" + totalpay;
+            else
+                payamount = "InvalidCredentials";
+            return payamount;
+        }
+
+        
+    }
 }
