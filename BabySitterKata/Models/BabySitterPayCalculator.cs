@@ -113,46 +113,50 @@ namespace BabySitterKata.Models
 
         public string AFamilyPayCalculate(double starttime, string amorpmstarttime, double endtime, string amorpmendtime)
         {
-            double totalworkedhours = 0;
+            double hoursworkedbefore11;
+            double hoursworkedafter11;
             double totalpay = 0;
             string payamount="InvalidCredentials";
             if ((amorpmstarttime == "PM") && (amorpmendtime == "PM"))
             {
-                totalworkedhours = endtime - starttime;
-                totalpay = totalworkedhours * 15;
-                payamount = "$" + totalpay;
-                return payamount;
-
+                hoursworkedbefore11 = endtime - starttime;
+                hoursworkedafter11 = 0;
+               
             }
             else if (((amorpmstarttime == "AM") && (amorpmendtime == "AM")))
             {
                 if (starttime == 12)
-                    totalworkedhours = endtime;
+                    hoursworkedafter11 = endtime;
                 else
-                    totalworkedhours = endtime - starttime;
-                totalpay = totalworkedhours * 20;
-                payamount = "$" + totalpay;
-                return payamount;
-
+                    hoursworkedafter11 = endtime - starttime;
+                hoursworkedbefore11 = 0;
+                
             }
             else if (((amorpmstarttime == "PM") && (amorpmendtime == "AM")))
             {
-                double hoursworkedbefore11;
-                double hoursworkedafter11;
+                
                 if (starttime == 11)
-                    hoursworkedbefore11 = 0.0;
+                    hoursworkedbefore11 = 0;
                 else
                     hoursworkedbefore11 = 11 - starttime;
                 if (endtime == 12)
                     hoursworkedafter11 = 1;
                 else
                     hoursworkedafter11 = 1 + endtime;
-                totalpay = (hoursworkedbefore11 * 15) + (hoursworkedafter11 * 20);
-                payamount = "$" + totalpay;
-                return payamount;
+              
             }
             else
-                return payamount;
+            {
+                hoursworkedbefore11 = 0;
+                hoursworkedafter11 = 0;
+            }
+            totalpay = (hoursworkedbefore11 * 15) + (hoursworkedafter11 * 20);
+            if(totalpay>0)
+            payamount = "$" + totalpay;
+            else
+            payamount = "InvalidCredentials";
+            return payamount;
+           
         }
 
         public string BFamilyPayCalculate(double starttime, string amorpmstarttime, double endtime, string amorpmendtime)
