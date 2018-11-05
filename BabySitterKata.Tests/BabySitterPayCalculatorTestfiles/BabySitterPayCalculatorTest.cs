@@ -158,26 +158,35 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //pay calculation for family A with both starts and ends in PM
             Assert.AreEqual("$30", b.payCalculator("A", 6, "PM", 8, "PM"));
 
-            //pay calculation for family A with both starts and ends in PM
+            //pay calculation for family A with both starts and ends in AM
             Assert.AreEqual("$60", b.payCalculator("A", 1, "AM", 4, "AM"));
 
-            //pay calculation for family A with both starts and ends in PM
+            //pay calculation for family A with both starts and ends in AM
             Assert.AreEqual("$80", b.payCalculator("A", 12, "AM", 4, "AM"));
 
-            //pay calculation for family A with both starts and ends in PM
+            //pay calculation for family A starts in PM and ends in AM
             Assert.AreEqual("$90", b.payCalculator("A",9, "PM", 2, "AM"));
 
-            //pay calculation for family A with both starts and ends in PM
+            //pay calculation for family A starts in PM and ends in AM
             Assert.AreEqual("$60", b.payCalculator("A", 11, "PM", 2, "AM"));
 
-            //pay calculation for family A with both starts and ends in PM
+            //pay calculation for family A starts in PM and ends in AM
             Assert.AreEqual("$20", b.payCalculator("A", 11, "PM", 12, "AM"));
 
-            //pay calculation for family A with both starts and ends in PM
+            //pay calculation for family B with both starts and ends in AM
             Assert.AreEqual("$32", b.payCalculator("B", 1, "AM", 3, "AM"));
 
-            //pay calculation for family A with both starts and ends in PM
-            Assert.AreEqual("$30", b.payCalculator("B",9, "PM", 11, "PM"));
+            //pay calculation for family B with both starts and ends in PM
+            Assert.AreEqual("$20", b.payCalculator("B",9, "PM", 11, "PM"));
+
+            //pay calculation for family B with both starts and ends in PM
+            Assert.AreEqual("$48", b.payCalculator("B", 5, "PM", 9, "PM"));
+
+            //pay calculation for family B with both starts and ends in PM
+            Assert.AreEqual("$60", b.payCalculator("B", 5, "PM", 10, "PM"));
+
+            //pay calculation for family B with both starts and ends in PM
+            Assert.AreEqual("$8", b.payCalculator("B", 10, "PM", 11, "PM"));
 
 
         }

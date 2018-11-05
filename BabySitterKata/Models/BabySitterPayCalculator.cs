@@ -157,7 +157,8 @@ namespace BabySitterKata.Models
 
         public string BFamilyPayCalculate(double starttime, string amorpmstarttime, double endtime, string amorpmendtime)
         {
-            double totalworkedhoursbefore10=0;
+        //Family B pays $12 per hour before 10pm, $8 between 10 and 12, and $16 the rest of the night
+            double totalworkedhoursbefore10 =0;
             double totalworkedhoursfrom10to12=0;
             double totalworkedhoursafter12 = 0;
             double totalpay = 0;
@@ -193,7 +194,7 @@ namespace BabySitterKata.Models
                     totalworkedhoursfrom10to12 = 1;
                     //endtime-10 which will be 1 always because only possible endtime is 11 PM
                 }
-                totalpay = (totalworkedhoursbefore10 *12)+(totalworkedhoursfrom10to12*18);
+                totalpay = (totalworkedhoursbefore10 *12)+(totalworkedhoursfrom10to12*8);
                 payamount = "$" + totalpay;
                 return payamount;
             }
