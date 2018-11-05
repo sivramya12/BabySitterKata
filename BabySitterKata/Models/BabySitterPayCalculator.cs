@@ -198,7 +198,37 @@ namespace BabySitterKata.Models
                 payamount = "$" + totalpay;
                 return payamount;
             }
-           
+
+            else if ((amorpmstarttime == "PM") && (amorpmendtime == "AM"))
+            {
+                if(starttime<10)
+                {
+                    totalworkedhoursbefore10 = 10 - starttime;                 
+                    totalworkedhoursfrom10to12 = 2;
+                    if (endtime == 12)
+                        totalworkedhoursafter12 = 0;
+                    else
+                        totalworkedhoursafter12 = endtime;
+                }
+                else 
+                {
+                    //starttime between 10 and 12
+                    totalworkedhoursbefore10 = 0;
+                    if (starttime == 10)
+                        totalworkedhoursfrom10to12 = 2;
+                    else
+                        totalworkedhoursfrom10to12 = 1;
+                    if (endtime == 12)
+                        totalworkedhoursafter12 = 0;
+                    else
+                        totalworkedhoursafter12 = endtime;
+
+                }
+                totalpay = (totalworkedhoursbefore10 * 12) + (totalworkedhoursfrom10to12 * 8)+(totalworkedhoursafter12 * 16);
+                payamount = "$" + totalpay;
+                return payamount;
+
+            }
             else
             return payamount;
         }

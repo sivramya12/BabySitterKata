@@ -173,6 +173,9 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //pay calculation for family A starts in PM and ends in AM
             Assert.AreEqual("$20", b.payCalculator("A", 11, "PM", 12, "AM"));
 
+            //pay calculation for family A starts in PM and ends in AM
+            Assert.AreEqual("$190", b.payCalculator("A", 5, "PM", 4, "AM"));
+
             //pay calculation for family B with both starts and ends in AM
             Assert.AreEqual("$32", b.payCalculator("B", 1, "AM", 3, "AM"));
 
@@ -188,6 +191,17 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //pay calculation for family B with both starts and ends in PM
             Assert.AreEqual("$8", b.payCalculator("B", 10, "PM", 11, "PM"));
 
+            //pay calculation for family B  work starts in PM and ends in AM
+            Assert.AreEqual("$60", b.payCalculator("B", 9, "PM", 2, "AM"));
+
+            //pay calculation for family B  work starts in PM and ends in AM
+            Assert.AreEqual("$8", b.payCalculator("B", 11, "PM", 12, "AM"));
+
+            //pay calculation for family B  work starts in PM and ends in AM
+            Assert.AreEqual("$48", b.payCalculator("B", 10, "PM", 2, "AM"));
+
+            //pay calculation for family B  work starts in PM and ends in AM
+            Assert.AreEqual("$140", b.payCalculator("B", 5, "PM", 4, "AM"));
 
         }
 
