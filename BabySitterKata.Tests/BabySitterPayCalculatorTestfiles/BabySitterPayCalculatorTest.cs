@@ -176,6 +176,10 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
             //pay calculation for family A with both starts and ends in PM
             Assert.AreEqual("$32", b.payCalculator("B", 1, "AM", 3, "AM"));
 
+            //pay calculation for family A with both starts and ends in PM
+            Assert.AreEqual("$30", b.payCalculator("B",9, "PM", 11, "PM"));
+
+
         }
 
     }

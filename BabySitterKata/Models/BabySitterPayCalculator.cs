@@ -157,20 +157,48 @@ namespace BabySitterKata.Models
 
         public string BFamilyPayCalculate(double starttime, string amorpmstarttime, double endtime, string amorpmendtime)
         {
-            double totalworkedhours = 0;
+            double totalworkedhoursbefore10=0;
+            double totalworkedhoursfrom10to12=0;
+            double totalworkedhoursafter12 = 0;
             double totalpay = 0;
             string payamount = "InvalidCredentials";
             if ((amorpmstarttime == "AM") && (amorpmendtime == "AM"))
             {
                 if (starttime == 12)
-                    totalworkedhours = endtime;
+                    totalworkedhoursafter12 = endtime;
                 else
-                    totalworkedhours = endtime - starttime;
-                totalpay = totalworkedhours * 16;
+                    totalworkedhoursafter12 = endtime - starttime;
+                totalpay = totalworkedhoursafter12 * 16;
                 payamount = "$" + totalpay;
                 return payamount;
             }
+            else if((amorpmstarttime == "PM") && (amorpmendtime == "PM"))
+            {
+                if((starttime<10)&&(endtime<=10))
+                {
+                    totalworkedhoursbefore10 = endtime - starttime;
+                    totalworkedhoursfrom10to12 = 0;
+                }
+                else if((starttime<10)&&(endtime>10))
+                {
+                    totalworkedhoursbefore10 = 10 - starttime;
+                    totalworkedhoursfrom10to12 = 1;
+                    //endtime-10 which will be 1 always because only possible endtime is 11 PM
 
+                }
+                else
+                {
+                    //starttime>=10 and endtime>10
+                    totalworkedhoursbefore10 = 0;
+                    totalworkedhoursfrom10to12 = 1;
+                    //endtime-10 which will be 1 always because only possible endtime is 11 PM
+                }
+                totalpay = (totalworkedhoursbefore10 *12)+(totalworkedhoursfrom10to12*18);
+                payamount = "$" + totalpay;
+                return payamount;
+            }
+           
+            else
             return payamount;
         }
 
