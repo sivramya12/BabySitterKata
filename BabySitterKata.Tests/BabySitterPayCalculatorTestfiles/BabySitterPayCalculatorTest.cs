@@ -205,6 +205,19 @@ namespace BabySitterKata.Tests.BabySitterPayCalculatorTestfiles
 
             //pay calculation for family C both startime and endtime AM
             Assert.AreEqual("$60", b.payCalculator("C", 12, "AM", 4, "AM"));
+
+            //pay calculation for family C both startime and endtime AM
+            Assert.AreEqual("$45", b.payCalculator("C", 1, "AM", 4, "AM"));
+
+            //pay calculation for family C both startime and endtime PM
+            Assert.AreEqual("$63", b.payCalculator("C", 6, "PM", 9, "PM"));
+
+            //pay calculation for family C both startime and endtime PM
+            Assert.AreEqual("$93", b.payCalculator("C", 6, "PM", 11, "PM"));
+
+            //pay calculation for family C both startime and endtime PM
+            Assert.AreEqual("$30", b.payCalculator("C", 9, "PM", 11, "PM"));
+
         }
 
     }

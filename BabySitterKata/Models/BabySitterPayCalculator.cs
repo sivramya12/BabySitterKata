@@ -263,7 +263,29 @@ namespace BabySitterKata.Models
             if ((amorpmstarttime == "AM") && (amorpmendtime == "AM"))
             {
                 hoursworkedbefore9 = 0;
-                hoursworkedafter9 = endtime;
+                if (starttime == 12)
+                    hoursworkedafter9 = endtime;
+                else
+                    hoursworkedafter9 = endtime - starttime;
+            }
+            else if((amorpmstarttime == "PM") && (amorpmendtime == "PM"))
+            {
+                if((starttime<9)&&(endtime<=9))
+                {
+                    hoursworkedbefore9 = endtime - starttime;
+                    hoursworkedafter9 = 0;
+                }
+                else if((starttime<9)&&endtime>9)
+                {
+                    hoursworkedbefore9 = 9 - starttime;
+                    hoursworkedafter9 = endtime - 9;
+                }
+                else
+                {
+                    //starttime >=9 and endtime >9
+                    hoursworkedbefore9 = 0;
+                    hoursworkedafter9 = endtime - starttime;
+                }
             }
             else
             {
