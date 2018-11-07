@@ -1,0 +1,86 @@
+﻿@model BabySitterKata.Models.BabySitterCalculatorModelclass
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <h4>BabySitterPayCalculator</h4>
+        <br />
+
+
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-4">
+                @Html.Label("StartTime", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.starttime, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.Label("AM/PM:", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.DropDownListFor(model => model.amorpmstarttime, ViewBag.amorpm as SelectList, "-select-", new { htmlAttributes = new { @class = "form-control" } })
+
+
+            </div>
+            @ViewBag.starttimemessage
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-4">
+
+                @Html.Label("EndTime", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.EditorFor(model => model.endtime, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.Label("AM/PM:", htmlAttributes: new { @class = "control-label col-md-2" })
+
+                @Html.DropDownListFor(model => model.amorpmendtime, ViewBag.amorpm as SelectList, "-select-", new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+        
+            @ViewBag.starttimemessage
+        </div>
+      
+
+        <div class="form-group">
+            <div class="col-md-4">
+                @Html.Label("Family Name", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.DropDownListFor(model => model.familyname, ViewBag.familyname as SelectList, "-select-", new { htmlAttributes = new { @class = "form-control" } })
+
+            </div>
+            </div>
+
+        
+
+        
+    
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Calculate" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    @ViewBag.result
+        }
+        
+            
+</body>
+</html>
